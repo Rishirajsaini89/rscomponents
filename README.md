@@ -43,13 +43,41 @@ export function Example() {
 }
 ```
 
-## Dev
+## Data Table Example
 
-```bash
-npm install
-npm run typecheck
-npm test
-npm run build
+```tsx
+import { RSDataTable, type DataTableColumn } from '@rishistack/rscomponents';
+
+type UserRow = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+const columns: DataTableColumn<UserRow>[] = [
+  { key: 'id', header: 'ID', accessor: (row) => row.id, sortAccessor: (row) => row.id },
+  { key: 'name', header: 'Name', accessor: (row) => row.name, sortAccessor: (row) => row.name },
+  { key: 'email', header: 'Email', accessor: (row) => row.email, sortAccessor: (row) => row.email }
+];
+
+const rows: UserRow[] = [
+  { id: 1, name: 'Ava Patel', email: 'ava@example.com' },
+  { id: 2, name: 'Ben Carter', email: 'ben@example.com' },
+  { id: 3, name: 'Cora Singh', email: 'cora@example.com' }
+];
+
+export function UsersTable() {
+  return (
+    <RSDataTable
+      columns={columns}
+      rows={rows}
+      searchable
+      sortable
+      paginated
+      pageSize={10}
+    />
+  );
+}
 ```
 
 ## Storybook
@@ -64,61 +92,15 @@ Build static docs:
 npm run build-storybook
 ```
 
-## Components Included
+Step-by-step component publishing guide:
 
-- `RSAlert`
-- `RSBadge`
-- `RSBootstrapElement`
-- `RSButton`
-- `RSCard`
-- `RSContainer`, `RSRow`, `RSCol`
-- `RSDropdown`, `RSDropdownItem`
-- `RSTextBox` (alias of `RSFormInput`)
-- `RSModal`
-- `RSNav`, `RSNavItem`, `RSNavLink`
-- `RSNavbar`, `RSNavbarBrand`, `RSNavbarText`
-- `RSOffcanvas`
-- `RSTable`
+- [docs/PUBLISH_NEW_COMPONENT.md](docs/PUBLISH_NEW_COMPONENT.md)
 
-## Publish Workflow
+## Components
 
-GitHub Actions file: `.github/workflows/publish.yml`
+Includes Bootstrap-wrapped primitives and layout/navigation/form components such as alerts, buttons, badges, cards, dropdowns, navbars, modals, offcanvas, tables, and form inputs.
 
-To publish from CI:
-
-- set npm package name in `package.json`
-- create repository secret `NPM_TOKEN`
-- create a GitHub Release (or run workflow manually)
-
-## Publish To npm
-
-First publish from your machine:
-
-```bash
-npm install
-npm run typecheck
-npm test
-npm run build
-npm login
-npm publish
-```
-
-Because `publishConfig.access` is set to `public`, the scoped package publishes as a public package.
-
-Before publishing, verify:
-
-- you own the npm scope `@rishistack`
-- the package version in `package.json` is new and not already published
-- `dist/` is generated successfully
-
-For the next release:
-
-```bash
-npm version patch
-npm publish
-```
-
-You can also publish through GitHub Actions after setting `NPM_TOKEN`.
+For complete props and examples, use Storybook.
 
 ## Customization Pattern
 

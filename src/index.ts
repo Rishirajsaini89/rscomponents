@@ -11,6 +11,7 @@ import type { ModalProps } from './components/Modal';
 import type { NavItemProps, NavLinkProps, NavProps } from './components/Nav';
 import type { NavbarBrandProps, NavbarProps, NavbarTextProps } from './components/Navbar';
 import type { OffcanvasProps } from './components/Offcanvas';
+import type { DataTableProps } from './components/DataTable';
 import type { TableProps } from './components/Table';
 
 export { Alert, type AlertProps } from './components/Alert';
@@ -33,6 +34,7 @@ export {
     type NavbarTextProps
 } from './components/Navbar';
 export { Offcanvas, type OffcanvasPlacement, type OffcanvasProps } from './components/Offcanvas';
+export { DataTable, type DataTableColumn, type DataTableProps } from './components/DataTable';
 export { Table, type TableProps } from './components/Table';
 
 // RS-prefixed aliases for consistent design system naming.
@@ -49,6 +51,7 @@ export { Modal as RSModal } from './components/Modal';
 export { Nav as RSNav, NavItem as RSNavItem, NavLink as RSNavLink } from './components/Nav';
 export { Navbar as RSNavbar, NavbarBrand as RSNavbarBrand, NavbarText as RSNavbarText } from './components/Navbar';
 export { Offcanvas as RSOffcanvas } from './components/Offcanvas';
+export { DataTable as RSDataTable } from './components/DataTable';
 export { Table as RSTable } from './components/Table';
 
 export type RSAlertProps = AlertProps;
@@ -73,4 +76,5 @@ export type RSNavbarProps = NavbarProps;
 export type RSNavbarBrandProps = NavbarBrandProps;
 export type RSNavbarTextProps = NavbarTextProps;
 export type RSOffcanvasProps = OffcanvasProps;
+export type RSDataTableProps<T> = DataTableProps<T>;
 export type RSTableProps = TableProps;
