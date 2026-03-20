@@ -1,0 +1,38 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "npm install",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"install"
+			]
+		},
+		{
+			"label": "install deps windows",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"npm install"
+			]
+		},
+		{
+			"label": "check node version",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"-v"
+			]
+		},
+		{
+			"label": "check npm version",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"-v"
+			]
+		}
+	]
+}
